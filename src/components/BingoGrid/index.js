@@ -20,10 +20,7 @@ const BingoGrid = ({ cols = 3, tileData, onTileClick, classes }) => (
   <div className={classes.root}>
     <GridList cellHeight={155} cols={3}>
       {tileData.map(tile => (
-        <GridListTile
-          key={tile.id}
-          cols={tile.cols || 1}
-        >
+        <GridListTile key={tile.id} cols={tile.cols || 1}>
           <BingoTile {...tile} onClick={onTileClick} />
         </GridListTile>
       ))}
