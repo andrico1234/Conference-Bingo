@@ -1,20 +1,31 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
+import { lightBlue, black } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
-import { GridListTile } from '@material-ui/core';
 
 const styles = {
   root: {
     alignItems: 'center',
-    backgroundColor: 'aliceblue',
     display: 'flex',
-    height: '100%',
     justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+  },
+  button: {
+    color: black,
+    backgroundColor: lightBlue[100],
+    '&:hover': {
+      backgroundColor: lightBlue[300],
+    },
+    height: '100%',
     width: '100%',
   },
 };
 
 const BingoTile = ({ active, text, classes }) => (
-  <div className={classes.root}>{text}</div>
+  <div className={classes.root}>
+    <Button className={classes.button}>{text}</Button>
+  </div>
 );
 
 export default withStyles(styles)(BingoTile);
