@@ -1,11 +1,11 @@
 /*
  * Grid to contain BingoTiles.
 */
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { GridList } from '@material-ui/core'
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { GridList, GridListTile } from '@material-ui/core';
 
-import BingoTile from '../BingoTile'
+import BingoTile from '../BingoTile';
 
 const styles = theme => ({
   root: {
@@ -15,26 +15,21 @@ const styles = theme => ({
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
-  gridList: {
-    width: 500,
-    height: 450,
-  },
-  subheader: {
-    width: '100%',
-  },
-})
+});
 
-const BingoGrid = ({ cols = 3, tiles, onTileClick, ...styleProps }) => (
-  <GridList cols={cols}>
-    {tiles.map(tile => (
-      <BingoTile
-        key={tile.id}
-        {...tile}
-        onClick={onTileClick}
-        {...styleProps}
-      />
-    ))}
-  </GridList>
-)
+const BingoGrid = ({ cols = 3, tileData, onTileClick, classes }) => (
+  <div className={classes.root}>
+    <GridList cellHeight={155} cols={3}>
+      {tileData.map(tile => (
+        <GridListTile
+          key={tile.id}
+          cols={tile.cols || 1}
+        >
+          <BingoTile {...tile} onClick={onTileClick} />
+        </GridListTile>
+      ))}
+    </GridList>
+  </div>
+);
 
-export default withStyles(styles)(BingoGrid)
+export default withStyles(styles)(BingoGrid);
