@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
 import '@material-ui/core/CssBaseline';
-
 import Bingo from '../components/BingoGrid';
 
 const getTileData = ({ edges }) =>
@@ -25,7 +24,7 @@ const IndexPage = ({
     <p>We are {`${author[0]} and ${author[1]}`}</p>
     <Link to="/page-2/">Go to page 2</Link>
     <div>
-      <Bingo tiles={getTileData(allContentfulBingoItem)} />
+      <Bingo tileData={getTileData(allContentfulBingoItem)} />
     </div>
   </div>
 );

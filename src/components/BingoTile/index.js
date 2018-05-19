@@ -1,13 +1,19 @@
-/*
- * Bingo tile
- * It contains text 
- * Two states, inactive or active.
-*/
 import React from 'react';
-import { GridListTile } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-export default ({ active, text, ...styleProps }) => (
-  <GridListTile active={active} {...styleProps}>
-    {text}
-  </GridListTile>
+const styles = {
+  root: {
+    alignItems: 'center',
+    backgroundColor: 'aliceblue',
+    display: 'flex',
+    height: '100%',
+    justifyContent: 'center',
+    width: '100%',
+  },
+};
+
+const BingoTile = ({ active, text, classes }) => (
+  <div className={classes.root}>{text}</div>
 );
+
+export default withStyles(styles)(BingoTile);
