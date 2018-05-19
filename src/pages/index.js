@@ -1,5 +1,17 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+
+import Bingo from '../components/BingoGrid'
+
+const getMockTiles = () => {
+  let mocks = []
+  for (let i = 0; i < 12; i++) {
+    mocks.push({ id: i, text: `Tile ${i}`, active: false })
+  }
+  return mocks;
+}
 
 const IndexPage = ({ data: { contentfulAuthors: { author } } }) => {
   return (
@@ -8,6 +20,9 @@ const IndexPage = ({ data: { contentfulAuthors: { author } } }) => {
       <p>Welcome to your new Gatsby site.</p>
       <p>We are {`${author[0]} and ${author[1]}`}</p>
       <Link to="/page-2/">Go to page 2</Link>
+  <div>
+    <Bingo tiles={getMockTiles()} />
+  </div>
     </div>
   )
 }
