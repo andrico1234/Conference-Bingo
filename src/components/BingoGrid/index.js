@@ -1,11 +1,11 @@
 /*
  * Grid to contain BingoTiles.
 */
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import { GridList } from '@material-ui/core'
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import { GridList } from '@material-ui/core';
 
-import BingoTile from '../BingoTile'
+import BingoTile from '../BingoTile';
 
 const styles = theme => ({
   root: {
@@ -22,7 +22,7 @@ const styles = theme => ({
   subheader: {
     width: '100%',
   },
-})
+});
 
 const BingoGrid = ({ cols = 3, tiles, onTileClick, ...styleProps }) => (
   <GridList cols={cols}>
@@ -35,6 +35,6 @@ const BingoGrid = ({ cols = 3, tiles, onTileClick, ...styleProps }) => (
       />
     ))}
   </GridList>
-)
+);
 
-export default withStyles(styles)(BingoGrid)
+export default withStyles(styles)(BingoGrid);

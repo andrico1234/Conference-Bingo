@@ -1,40 +1,53 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React from 'react';
+import Link from 'gatsby-link';
 import '@material-ui/core/CssBaseline';
 
-import Bingo from '../components/BingoGrid'
+import Bingo from '../components/BingoGrid';
 
-const getMockTiles = () => {
-  let mocks = []
-  for (let i = 0; i < 12; i++) {
-    mocks.push({
-      id: i,
-      text: `Tile ${i}`,
-      active: false,
-    })
-  }
-  return mocks;
-}
+const getTileData = ({ edges }) => (
+  edges.map(item => {
+    return {
+      id: item.node.id,
+      active: item.node.isActive,
+      text: item.node.itemName,
+    }
+  })
+);
 
-const IndexPage = ({ data: { contentfulAuthors: { author } } }) => {
-  return (
+const IndexPage = ({
+   data: {
+     contentfulAuthors: { author },
+     allContentfulBingoItem,
+   },
+
+ }) => (
+  <div>
+    <h1>Hi people</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <p>We are {`${author[0]} and ${author[1]}`}</p>
+    <Link to="/page-2/">Go to page 2</Link>
     <div>
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>We are {`${author[0]} and ${author[1]}`}</p>
-      <Link to="/page-2/">Go to page 2</Link>
-      <div>
-        <Bingo tiles={getMockTiles()}/>
-      </div>
+      <Bingo tiles={getTileData(allContentfulBingoItem)}/>
     </div>
-  )
-}
+  </div>
+);
+
 export default IndexPage;
 
 export const query = graphql`
   query rootQuery {
     contentfulAuthors {
       author
+    }
+
+    allContentfulBingoItem {
+      edges {
+        node {
+          id
+          isActive
+          itemName
+        }
+      }
     }
   }
 `;
