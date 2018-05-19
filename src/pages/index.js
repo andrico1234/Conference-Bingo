@@ -4,30 +4,28 @@ import '@material-ui/core/CssBaseline';
 
 import Bingo from '../components/BingoGrid';
 
-const getTileData = ({ edges }) => (
+const getTileData = ({ edges }) =>
   edges.map(item => {
     return {
       id: item.node.id,
       active: item.node.isActive,
       text: item.node.itemName,
-    }
-  })
-);
+    };
+  });
 
 const IndexPage = ({
-   data: {
-     contentfulAuthors: { author },
-     allContentfulBingoItem,
-   },
-
- }) => (
+  data: {
+    contentfulAuthors: { author },
+    allContentfulBingoItem,
+  },
+}) => (
   <div>
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>We are {`${author[0]} and ${author[1]}`}</p>
     <Link to="/page-2/">Go to page 2</Link>
     <div>
-      <Bingo tiles={getTileData(allContentfulBingoItem)}/>
+      <Bingo tiles={getTileData(allContentfulBingoItem)} />
     </div>
   </div>
 );
