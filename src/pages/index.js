@@ -7,7 +7,11 @@ import Bingo from '../components/BingoGrid';
 const getMockTiles = () => {
   let mocks = [];
   for (let i = 0; i < 12; i++) {
-    mocks.push({ id: i, text: `Tile ${i}`, active: false });
+    mocks.push({
+      id: i,
+      text: `Tile ${i}`,
+      active: false,
+    });
   }
   return mocks;
 };
